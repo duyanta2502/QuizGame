@@ -15,4 +15,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('/quizz/store', [GameController::class, 'store']);
     Route::post('/quizz/{id}/update', [GameController::class, 'update']);
     Route::delete('/quizz/{id}', [GameController::class, 'destroy']);
+    Route::post('/quizz/checkCodeQuizz', [GameController::class, 'checkCodeQuizz']);
 });

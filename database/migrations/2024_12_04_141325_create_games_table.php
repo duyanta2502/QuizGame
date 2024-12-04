@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('creator_id')->constrained('users')->onDelete('cascade');
             $table->string('game_title');
-            $table->date('start_time')->nullable();
+            $table->dateTime('start_time')->nullable();
             $table->string('code', 10)->unique();
             $table->timestamps();
         });
