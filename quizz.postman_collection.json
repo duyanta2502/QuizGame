@@ -147,6 +147,250 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "Create quizz",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|Gme6TABeAbDQS1GR2ZJhFQCAVV3WiT8ojuihYKNNd5bcd88c"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "game_title",
+							"value": "test 1",
+							"type": "text"
+						},
+						{
+							"key": "start_time",
+							"value": "2024-12-04 12:12:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/quizz/store",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"quizz",
+						"store"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get quizz detail",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|Gme6TABeAbDQS1GR2ZJhFQCAVV3WiT8ojuihYKNNd5bcd88c"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "game_title",
+							"value": "test 1",
+							"type": "text"
+						},
+						{
+							"key": "start_time",
+							"value": "2024-12-04 12:12:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/quizz/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"quizz",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update quizz",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|Gme6TABeAbDQS1GR2ZJhFQCAVV3WiT8ojuihYKNNd5bcd88c"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "game_title",
+							"value": "test 1 edit",
+							"type": "text"
+						},
+						{
+							"key": "start_time",
+							"value": "2024-12-05 12:12:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/quizz/1/update",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"quizz",
+						"1",
+						"update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete quizz",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|Gme6TABeAbDQS1GR2ZJhFQCAVV3WiT8ojuihYKNNd5bcd88c"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/quizz/1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"quizz",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check quizz code",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer 2|Gme6TABeAbDQS1GR2ZJhFQCAVV3WiT8ojuihYKNNd5bcd88c"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "game_title",
+							"value": "test 1 edit",
+							"type": "text"
+						},
+						{
+							"key": "start_time",
+							"value": "2024-12-05 12:12:00",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/v1/quizz/checkCodeQuizz?code=ckRxhe",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"v1",
+						"quizz",
+						"checkCodeQuizz"
+					],
+					"query": [
+						{
+							"key": "code",
+							"value": "ckRxhe"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
