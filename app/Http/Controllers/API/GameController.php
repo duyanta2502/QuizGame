@@ -98,7 +98,7 @@ class GameController extends Controller
 
     public function getQrQuizz($id)
     {
-        $quizUrl = url('/play/quizz/' . $id);
+        $quizUrl = 'https://localhost:3000/play/quizz/' . $id;
 
         $qrCode = QrCode::format('png')->size(300)->generate($quizUrl);
 
