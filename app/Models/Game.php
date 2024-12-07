@@ -30,4 +30,9 @@ class Game extends Model
         return $this->belongsTo(User::class, 'creator_id');
         
     }
+
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
+    }
 }

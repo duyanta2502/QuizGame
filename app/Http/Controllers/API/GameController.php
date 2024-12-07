@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Game;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class GameController extends Controller
 {
@@ -29,7 +30,7 @@ class GameController extends Controller
 
     public function show(string $id)
     {
-        $game = Game::find($id);
+        $game = Game::with('questions')->find($id);
         if (!$game) {
             return response()->json(['error' => 'Game not found'], 404);
         }
@@ -93,5 +94,15 @@ class GameController extends Controller
             'message' => 'Code is valid and the game is ready',
             'game' => $game
         ], 200);
+    }
+
+    public function getQrQuizz($id)
+    {
+        $quizUrl = url('/play/quizz/' . $id);
+
+        $qrCode = QrCode::format('png')->size(300)->generate($quizUrl);
+
+        return response($qrCode, 200)
+                ->header('Content-Type', 'image/png');
     }
 }
