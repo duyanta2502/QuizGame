@@ -40,7 +40,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/register",
+							"raw": "http://127.0.0.1:8000/api/register",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -51,7 +51,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"register"
 							]
 						}
@@ -84,7 +83,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/login",
+							"raw": "http://127.0.0.1:8000/api/login",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -95,7 +94,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"login"
 							]
 						}
@@ -133,7 +131,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/logout",
+							"raw": "http://127.0.0.1:8000/api/logout",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -144,7 +142,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"logout"
 							]
 						}
@@ -186,7 +183,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/quizz/store",
+							"raw": "http://127.0.0.1:8000/api/quizz/store",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -197,7 +194,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"quizz",
 								"store"
 							]
@@ -238,7 +234,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/quizz/1",
+							"raw": "http://127.0.0.1:8000/api/quizz/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -249,7 +245,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"quizz",
 								"1"
 							]
@@ -287,7 +282,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/quizz/1/update",
+							"raw": "http://127.0.0.1:8000/api/quizz/1/update",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -298,7 +293,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"quizz",
 								"1",
 								"update"
@@ -326,7 +320,7 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/quizz/1",
+							"raw": "http://127.0.0.1:8000/api/quizz/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -337,7 +331,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"quizz",
 								"1"
 							]
@@ -375,7 +368,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/quizz/checkCodeQuizz?code=ckRxhe",
+							"raw": "http://127.0.0.1:8000/api/quizz/checkCodeQuizz?code=ckRxhe",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -386,7 +379,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"quizz",
 								"checkCodeQuizz"
 							],
@@ -428,7 +420,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/quizz/1/qrQuizz",
+							"raw": "http://127.0.0.1:8000/api/quizz/1/qrQuizz",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -439,7 +431,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"quizz",
 								"1",
 								"qrQuizz"
@@ -521,7 +512,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/question/1",
+							"raw": "http://127.0.0.1:8000/api/question/1",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -532,7 +523,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"question",
 								"1"
 							]
@@ -605,7 +595,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/question/store",
+							"raw": "http://127.0.0.1:8000/api/question/store",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -616,7 +606,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"question",
 								"store"
 							]
@@ -689,7 +678,7 @@
 							]
 						},
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/question/1/update",
+							"raw": "http://127.0.0.1:8000/api/question/1/update",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -700,7 +689,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"question",
 								"1",
 								"update"
@@ -724,7 +712,7 @@
 							}
 						],
 						"url": {
-							"raw": "http://127.0.0.1:8000/api/v1/question/2",
+							"raw": "http://127.0.0.1:8000/api/question/2",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -735,7 +723,6 @@
 							"port": "8000",
 							"path": [
 								"api",
-								"v1",
 								"question",
 								"2"
 							]
