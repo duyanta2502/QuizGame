@@ -4,7 +4,8 @@
     use App\Http\Controllers\API\GameController;
     use App\Http\Controllers\API\QuestionController;
     use Illuminate\Support\Facades\Route;
-
+    use Illuminate\Http\Request;
+        
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
 
