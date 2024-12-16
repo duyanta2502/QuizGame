@@ -1,38 +1,33 @@
 <?php
 
 namespace App\Models;
-
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Game extends Model
 {
-    protected $table = 'games';
+    use HasFactory;
 
     protected $fillable = [
-        'creator_id',
-        'game_title',
-        'start_time', 
-        'code',
+        'host_id',
+        'quiz_id',
+        'pin',
+        'is_live',
+        'player_list',
     ];
 
-    protected static function boot()
-    {
-        parent::boot();
+    protected $casts = [
+        'player_list' => 'array',
+    ];
 
-        static::creating(function ($game) {
-            $game->code = $game->code ?? Str::random(6); 
-        });
+    public function host()
+    {
+        return $this->belongsTo(User::class, 'host_id');
     }
 
-    public function creator()
+    public function quiz()
     {
-        return $this->belongsTo(User::class, 'creator_id');
-        
-    }
-
-    public function questions()
-    {
-        return $this->hasMany(Question::class);
+        return $this->belongsTo(Quiz::class, 'quiz_id');
     }
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
@@ -9,39 +10,44 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required|email',
+            'mail' => 'required|email',
             'password' => 'required',
         ]);
 
-        $user = User::where('email', $request->email)->first();
+        $user = User::where('mail', $request->mail)->first();
 
-        if (! $user || ! Hash::check($request->password, $user->password)) {
-            throw ValidationException::withMessages([
-                'email' => ['The provided credentials are incorrect.'],
+        if (!$user || !Hash::check($request->password, $user->password)) {
+             throw ValidationException::withMessages([
+                'mail' => ['The provided credentials are incorrect.'],
             ]);
         }
+        $token = $user->createToken('auth_token')->plainTextToken;
 
-        $token = $user->createToken('my-app-token')->plainTextToken;
-                                        
-        return response()->json(['token' => $token], 200);
+        return response()->json([
+            'token' => $token,
+            'message' => 'Login successful.'
+        ], 200);
     }
-
     public function register(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|string|min:8|confirmed',
+            'first_name' => 'string|max:100',
+            'last_name' => 'string|max:100',
+            'mail' => 'required|email|unique:users,mail|max:150',
+            'password' => 'required|string|min:6',
         ]);
 
         $user = User::create([
-            'name' => $request->email,
-            'email' => $request->email,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'user_name' => $request->mail,
+            'mail' => $request->mail,
             'password' => Hash::make($request->password),
         ]);
-
 
         return response()->json([
             'message' => 'User registered successfully.',
@@ -51,10 +57,8 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-		$request->user()->tokens()->delete();
+        $request->user()->currentAccessToken()->delete();
 
-		//$request->user()->currentAccessToken()->delete();
-
-		return response()->json(['message' => 'You have been successfully logged out.'], 200);
+        return response()->json(['message' => 'Successfully logged out'], 200);
     }
 }
