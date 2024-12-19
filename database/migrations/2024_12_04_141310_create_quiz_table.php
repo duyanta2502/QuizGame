@@ -13,16 +13,14 @@ return new class extends Migration
     {
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 150)->unique();
+            $table->string('name', 150)->nullable();
             $table->text('description')->nullable();
             $table->string('background_image')->nullable();
             $table->foreignId('creator_id')->constrained('users')->onDelete('cascade');
             $table->integer('points_per_question');
-            $table->integer('number_of_questions');
-            $table->boolean('is_public')->default(false);
-            $table->json('tags')->nullable();
-            $table->integer('likes_count')->default(0);
-            $table->integer('comments_count')->default(0);
+            $table->integer('number_of_questions')->default(0);
+            $table->boolean('tags')->default(false);
+            $table->json('question_list')->nullable();
             $table->timestamps();
         });
 

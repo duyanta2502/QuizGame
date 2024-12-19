@@ -12,15 +12,23 @@ class Game extends Model
     protected $fillable = [
         'host_id',
         'quiz_id',
+        'start_date',
         'pin',
         'is_live',
         'player_list',
+        'player_result_list',
     ];
 
     protected $casts = [
-        'player_list' => 'array',
+        'playerList' => 'array', // Cast playerList thành mảng
+        'playerResultList' => 'array', // Cast playerResultList thành mảng
     ];
 
+    // Quan hệ với PlayerResult
+    public function playerResults()
+    {
+        return $this->hasMany(PlayerResult::class);
+    }
     public function host()
     {
         return $this->belongsTo(User::class, 'host_id');

@@ -12,7 +12,7 @@ class PlayerResultStat extends Model
     protected $fillable = [
         'game_id',
         'player_result_id',
-        'player_id',
+        'player_name',
         'average_time_per_question',
     ];
 
@@ -24,10 +24,5 @@ class PlayerResultStat extends Model
     public function playerResult()
     {
         return $this->belongsTo(PlayerResult::class, 'player_result_id');
-    }
-
-    public function player()
-    {
-        return $this->belongsTo(User::class, 'player_id');
     }
 }

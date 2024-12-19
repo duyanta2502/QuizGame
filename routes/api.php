@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\AuthController;
-use App\Http\Controllers\API\GamesController;
+use App\Http\Controllers\API\GameController;
 use App\Http\Controllers\API\GameStatisticsController;
 use App\Http\Controllers\API\LeaderboardController;
 use App\Http\Controllers\API\PlayerResultsController;
@@ -15,35 +15,36 @@ Route::post('/login', [AuthController::class, 'login']);        //ok
 Route::post('/register', [AuthController::class, 'register']);      //ok
 
 Route::middleware(['auth:sanctum'])->group(function () {
+    // auth
     Route::post('/logout', [AuthController::class, 'logout']);                  //ok
-    // Quiz routes
-    Route::get('/quizzes/public', [QuizController::class, 'getPublicQuizzes']);
-    Route::get('/quizzes/search', [QuizController::class, 'search']);
-    Route::get('/quizzes/teacher/{teacherId}', [QuizController::class, 'getTeacherQuizzes']);
-    Route::patch('/quizzes/{id}/likeQuiz', [QuizController::class, 'like']);
-    Route::post('/quizzes/{id}/commentQuiz', [QuizController::class, 'comment']);
-    Route::post('/quizzes/{quizId}/questions', [QuizController::class, 'addQuestion']);
-    Route::get('/quizzes/{quizId}/questions', [QuizController::class, 'getQuestions']);
-    Route::get('/quizzes/{quizId}/questions/{questionId}', [QuizController::class, 'getQuestion']);
-    Route::patch('/quizzes/{quizId}/questions/{questionId}', [QuizController::class, 'updateQuestion']);
-    Route::delete('/quizzes/{quizId}/questions/{questionId}', [QuizController::class, 'destroyQuestion']);
-    Route::apiResource('/quizzes', QuizController::class);
 
-    // Game routes
-    Route::patch('/games/{gameId}/players', [GamesController::class, 'addPlayer']);
-    Route::apiResource('/games', GamesController::class);
+    //quiz
+    Route::post('/quizzes', [QuizController::class, 'createQuiz']);         //ok
+    Route::get('/quizzes', [QuizController::class, 'getQuizzes']);
+    Route::get('/quizzes/{id}', [QuizController::class, 'getQuiz']);
+    Route::delete('/quizzes/{id}', [QuizController::class, 'deleteQuiz']);   //ok
+    Route::put('/quizzes/{id}', [QuizController::class, 'updateQuiz']);         //ok
+    Route::post('/quizzes/{quizId}/questions', [QuizController::class, 'addQuestion']); //ok
+    Route::get('/quizzes/{quizId}/questions', [QuizController::class, 'getQuestions']); //pk
 
-    // Player Result routes
-    Route::patch('/player-results/{playerResultId}/answers', [PlayerResultsController::class, 'addAnswer']);
-    Route::get('/player-results/{playerResultId}/answers', [PlayerResultsController::class, 'getAnswers']);
-    Route::get('/player-results/{playerResultId}/answers/{answerId}', [PlayerResultsController::class, 'getAnswer']);
-    Route::patch('/player-results/{playerResultId}/answers/{answerId}', [PlayerResultsController::class, 'updateAnswer']);
-    Route::delete('/player-results/{playerResultId}/answers/{answerId}', [PlayerResultsController::class, 'destroyAnswer']);
-    Route::apiResource('/player-results', PlayerResultsController::class);
+    //game
+    Route::post('game', [GameController::class, 'createGame']);  // Tạo game mới
+    Route::get('games', [GameController::class, 'getGames']);  // Lấy tất cả các game
+    Route::get('game/{id}', [GameController::class, 'getGame']);  // Lấy game theo ID
+    Route::delete('game/{id}', [GameController::class, 'deleteGame']);  // Xóa game theo ID
+    Route::put('game/{id}', [GameController::class, 'updateGame']);  // Cập nhật game theo ID
+    Route::post('game/{gameId}/add-player', [GameController::class, 'addPlayer']);  // Thêm player vào game
 
-    // Leaderboard routes
-    Route::patch('/leaderboards/{leaderboardId}/playerresult', [LeaderboardController::class, 'addPlayerResult']);
-    Route::patch('/leaderboards/{leaderboardId}/questionleaderboard', [LeaderboardController::class, 'updateQuestionLeaderboard']);
-    Route::patch('/leaderboards/{leaderboardId}/currentleaderboard', [LeaderboardController::class, 'updateCurrentLeaderboard']);
-    Route::apiResource('/leaderboards', LeaderboardController::class);
+    //leaderboard
+    Route::post('leaderboard', [LeaderboardController::class, 'createLeaderboard']);
+    Route::get('leaderboard/{id}', [LeaderboardController::class, 'getLeaderboard']);
+    Route::post('leaderboard/{leaderboardId}/add-player-result', [LeaderboardController::class, 'addPlayerResult']);
+    Route::put('leaderboard/{leaderboardId}/update-question-leaderboard', [LeaderboardController::class, 'updateQuestionLeaderboard']);
+    Route::put('leaderboard/{leaderboardId}/update-current-leaderboard', [LeaderboardController::class, 'updateCurrentLeaderboard']);
+
+    //Player
+
+
+
+
 });

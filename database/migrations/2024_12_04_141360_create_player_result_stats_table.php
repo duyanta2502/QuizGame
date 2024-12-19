@@ -15,8 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('game_id')->constrained('games')->onDelete('cascade');
             $table->foreignId('player_result_id')->constrained('player_results')->onDelete('cascade');
-            $table->foreignId('player_id')->constrained('users')->onDelete('cascade');
-            $table->float('average_time_per_question')->nullable();
+            $table->string('player_name');
             $table->timestamps();
         });
 

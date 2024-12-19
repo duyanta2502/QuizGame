@@ -9,6 +9,8 @@ class Quiz extends Model
 {
     use HasFactory;
 
+    protected $table = 'quizzes'; // Tên bảng trong cơ sở dữ liệu
+
     protected $fillable = [
         'name',
         'description',
@@ -16,18 +18,48 @@ class Quiz extends Model
         'creator_id',
         'points_per_question',
         'number_of_questions',
-        'is_public',
-        'tags',
-        'likes_count',
-        'comments_count',
+        'question_list',
     ];
 
     protected $casts = [
-        'tags' => 'array',
+        'question_list' => 'array', // Tự động chuyển JSON thành mảng khi truy cập
     ];
 
+    /**
+     * Quan hệ với bảng users (người tạo quiz).
+     */
     public function creator()
     {
         return $this->belongsTo(User::class, 'creator_id');
+    }
+
+    /**
+     * Quan hệ với bảng games (quiz được sử dụng trong các game).
+     */
+    public function games()
+    {
+        return $this->hasMany(Game::class, 'quiz_id');
+    }
+
+    /**
+     * Lấy danh sách câu hỏi dưới dạng mảng.
+     */
+    public function getQuestionsAttribute()
+    {
+        // Nếu question_list là chuỗi JSON, giải mã thành mảng
+        if (is_string($this->question_list)) {
+            $this->question_list = json_decode($this->question_list, true);
+        }
+
+        // Kiểm tra nếu question_list là mảng, trả về mảng đó, nếu không trả về mảng rỗng
+        return is_array($this->question_list) ? $this->question_list : [];
+    }
+
+    /**
+     * Đếm số lượng câu hỏi từ danh sách câu hỏi.
+     */
+    public function getNumberOfQuestionsAttribute()
+    {
+        return count($this->getQuestionsAttribute());
     }
 }
